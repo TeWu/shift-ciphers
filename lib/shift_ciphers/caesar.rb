@@ -1,11 +1,11 @@
-require 'shift_ciphers/shift_ciphers'
+require 'shift_ciphers/alphabets'
 
 module ShiftCiphers
   class Caesar
     DEFAULT_OFFSET = 13
     attr_accessor :offset, :alphabet
 
-    def initialize(offset = DEFAULT_OFFSET, alphabet = ALPHABET)
+    def initialize(offset = DEFAULT_OFFSET, alphabet = Alphabets::DEFAULT)
       @offset = offset
       @alphabet = alphabet
     end
@@ -19,17 +19,17 @@ module ShiftCiphers
     end
 
     class << self
-      def encrypt(plaintext, offset = DEFAULT_OFFSET, alphabet = ALPHABET)
+      def encrypt(plaintext, offset = DEFAULT_OFFSET, alphabet = Alphabets::DEFAULT)
         process(plaintext, offset, :encrypt, alphabet)
       end
 
-      def decrypt(cyphertext, offset = DEFAULT_OFFSET, alphabet = ALPHABET)
+      def decrypt(cyphertext, offset = DEFAULT_OFFSET, alphabet = Alphabets::DEFAULT)
         process(cyphertext, offset, :decrypt, alphabet)
       end
 
       protected
 
-      def process(text, offset, direction = :encrypt, alphabet = ALPHABET)
+      def process(text, offset, direction = :encrypt, alphabet = Alphabets::DEFAULT)
         offset *= (direction == :encrypt ? 1 : -1)
         text.each_char.reduce("") do |cyphertext, char|
           char_idx = alphabet.index(char)

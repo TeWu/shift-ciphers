@@ -1,10 +1,10 @@
-require 'shift_ciphers/shift_ciphers'
+require 'shift_ciphers/alphabets'
 
 module ShiftCiphers
   class Vigenere
     attr_accessor :key, :alphabet
 
-    def initialize(key, alphabet = ALPHABET)
+    def initialize(key, alphabet = Alphabets::DEFAULT)
       @key = key
       @alphabet = alphabet
     end
@@ -18,17 +18,17 @@ module ShiftCiphers
     end
 
     class << self
-      def encrypt(plaintext, key, alphabet = ALPHABET)
+      def encrypt(plaintext, key, alphabet = Alphabets::DEFAULT)
         process(plaintext, key, :encrypt, alphabet)
       end
 
-      def decrypt(cyphertext, key, alphabet = ALPHABET)
+      def decrypt(cyphertext, key, alphabet = Alphabets::DEFAULT)
         process(cyphertext, key, :decrypt, alphabet)
       end
 
       protected
 
-      def process(text, key, direction = :encrypt, alphabet = ALPHABET)
+      def process(text, key, direction = :encrypt, alphabet = Alphabets::DEFAULT)
         key_chars = key.chars.cycle
         text.each_char.reduce("") do |cyphertext, char|
           char_idx = alphabet.index(char)
