@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(doc|test|spec|features|bin)/|Rakefile|Gemfile*|CHANGELOG}) || f.start_with?('.') }
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = ">= 2.5.0"
+  s.required_ruby_version = ">= 2.1.0"
 
   s.add_development_dependency "bundler", "~> 1.16"
   s.add_development_dependency "pry", "~> 0.11"
