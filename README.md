@@ -1,4 +1,4 @@
-Shift Ciphers [![Gem Version](https://badge.fury.io/rb/shift_ciphers.svg)](http://badge.fury.io/rb/shift_ciphers) [![Build Status](https://travis-ci.org/TeWu/shift_ciphers.svg?branch=master)](https://travis-ci.org/TeWu/shift_ciphers)
+Shift Ciphers [![Gem Version](https://badge.fury.io/rb/shift_ciphers.svg)](http://badge.fury.io/rb/shift_ciphers) [![Build Status](https://travis-ci.org/TeWu/shift-ciphers.svg?branch=master)](https://travis-ci.org/TeWu/shift-ciphers)
 =======
 
 **Shift Ciphers** gem is simple, yet complete, implementation of [Caesar](https://en.wikipedia.org/wiki/Caesar_cipher) and [Vigenère](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher) ciphers.
