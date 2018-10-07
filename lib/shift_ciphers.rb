@@ -1,3 +1,5 @@
 require 'shift_ciphers/version'
+require 'shift_ciphers/alphabets'
+require 'shift_ciphers/error'
 require 'shift_ciphers/caesar'
 require 'shift_ciphers/vigenere'

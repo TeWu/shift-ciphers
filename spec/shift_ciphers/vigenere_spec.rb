@@ -19,12 +19,13 @@ RSpec.describe ShiftCiphers::Vigenere do
   end
 
   it "works with custom alphabet" do
+    alphabet = (?A..?Z).to_a.join
     key = "LEMON"
     plaintext = "ATTACKATDAWN"
-    cyphertext = ShiftCiphers::Vigenere.encrypt(plaintext, key, (?A..?Z).to_a.join)
+    cyphertext = ShiftCiphers::Vigenere.encrypt(plaintext, key, alphabet: alphabet)
     expect(cyphertext).to eq "LXFOPVEFRNHR"
-    expect(ShiftCiphers::Vigenere.decrypt(cyphertext, key, (?A..?Z).to_a.join)).to eq plaintext
-    expect(ShiftCiphers::Vigenere.decrypt(cyphertext, "WRONGKEY", (?A..?Z).to_a.join)).to_not eq plaintext
+    expect(ShiftCiphers::Vigenere.decrypt(cyphertext, key, alphabet: alphabet)).to eq plaintext
+    expect(ShiftCiphers::Vigenere.decrypt(cyphertext, "WRONGKEY", alphabet: alphabet)).to_not eq plaintext
   end
 
 end
