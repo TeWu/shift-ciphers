@@ -19,7 +19,6 @@ module ShiftCiphers
     def alphabet=(alphabet)
       validate_key(key, alphabet)
       @alphabet = alphabet
-      set_key_offsets
     end
 
     def encrypt(plaintext)
