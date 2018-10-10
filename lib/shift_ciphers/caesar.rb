@@ -13,21 +13,21 @@ module ShiftCiphers
       process(plaintext, :encrypt)
     end
 
-    def decrypt(cyphertext)
-      process(cyphertext, :decrypt)
+    def decrypt(ciphertext)
+      process(ciphertext, :decrypt)
     end
 
     protected
 
     def process(text, direction)
-      text.each_char.reduce("") do |cyphertext, char|
+      text.each_char.reduce("") do |ciphertext, char|
         char_idx = alphabet.index(char)
         if !char_idx.nil?
           rel_offset = offset * (direction == :encrypt ? 1 : -1)
-          cyphertext << alphabet[(char_idx + rel_offset) % alphabet.size]
+          ciphertext << alphabet[(char_idx + rel_offset) % alphabet.size]
         else
           if nonalphabet_char_strategy == :dont_encrypt
-            cyphertext << char
+            ciphertext << char
           else
             raise CipherError.new("Character #{char.inspect} is not in the alphabet: #{alphabet.inspect}")
           end
@@ -40,8 +40,8 @@ module ShiftCiphers
         self.new(**options).encrypt(plaintext)
       end
 
-      def decrypt(cyphertext, **options)
-        self.new(**options).decrypt(cyphertext)
+      def decrypt(ciphertext, **options)
+        self.new(**options).decrypt(ciphertext)
       end
     end
 

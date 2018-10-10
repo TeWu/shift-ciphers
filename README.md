@@ -15,13 +15,13 @@ Basic usage
 require 'shift_ciphers'
 
 caesar = ShiftCiphers::Caesar.new
-caesar_cyphertext = caesar.encrypt("ATTACKATDAWN")
-p caesar_cyphertext
-p caesar.decrypt(caesar_cyphertext)
+caesar_ciphertext = caesar.encrypt("ATTACKATDAWN")
+p caesar_ciphertext
+p caesar.decrypt(caesar_ciphertext)
 
 key = "5ecr3t"
-vigenere_cyphertext = ShiftCiphers::Vigenere.encrypt("ATTACKATDAWN", key)
+vigenere_ciphertext = ShiftCiphers::Vigenere.encrypt("ATTACKATDAWN", key)
 p key
-p vigenere_cyphertext
-p ShiftCiphers::Vigenere.decrypt(vigenere_cyphertext, key)
+p vigenere_ciphertext
+p ShiftCiphers::Vigenere.decrypt(vigenere_ciphertext, key)
 ```
