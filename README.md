@@ -16,27 +16,27 @@ require 'shift_ciphers'
 
 plaintext = "Attack at dawn!"
 
-encrypted = ShiftCiphers::Caesar.encrypt(plaintext, offset: 5)
-decrypted = ShiftCiphers::Caesar.decrypt(encrypted, offset: 5)
+encrypted = ShiftCiphers::Caesar.encrypt(plaintext, offset: 5)    # => "Fyyfhp%fy%ifBs^"
+decrypted = ShiftCiphers::Caesar.decrypt(encrypted, offset: 5)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 
-encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "my keyword")
-decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "my keyword")
+encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "my keyword")    # => "W!0uqS3yU=zI3H{"
+decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "my keyword")    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 ```
 
-... or instantiate cipher, and benefit from stored configuration info (e.g. `offset` for Caesar cipher, or `key` for Vigenère cipher):
+... or instantiate a cipher, and benefit from stored configuration info (e.g. `offset` for Caesar cipher, or `key` for Vigenère):
 
 ```ruby
 caesar = ShiftCiphers::Caesar.new
 caesar.offset = 5
-encrypted = caesar.encrypt(plaintext)
-decrypted = caesar.decrypt(encrypted)
+encrypted = caesar.encrypt(plaintext)    # => "Fyyfhp%fy%ifBs^"
+decrypted = caesar.decrypt(encrypted)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 
 vigenere = ShiftCiphers::Vigenere.new("my keyword")
-encrypted = vigenere.encrypt(plaintext)
-decrypted = vigenere.decrypt(encrypted)
+encrypted = vigenere.encrypt(plaintext)    # => "W!0uqS3yU=zI3H{"
+decrypted = vigenere.decrypt(encrypted)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 ```
 
@@ -44,8 +44,8 @@ You can customize alphabet used by cipher:
 
 ```ruby
 plaintext = "ATTACKATDAWN"
-encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "KEYWORD", alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "KEYWORD", alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "KEYWORD", alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")    # => "KXRWQBDDHYSB"
+decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "KEYWORD", alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")    # => "ATTACKATDAWN"
 decrypted == plaintext  # Should be true
 ```
 
@@ -57,7 +57,7 @@ encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "KEYWORD", alphabet: "ABCD
 # Raises ShiftCiphers::CipherError: Invalid input "ATTACK!". Character "!" is not in the alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ```
 
-You can avoid this exception by telling cipher to not encrypt characters which are not in its alphabet. This is done by passing `nonalphabet_char_strategy` argument to `encrypt`/`decrypt` class method (or by using `nonalphabet_char_strategy=` instance method):
+You can avoid this exception by telling cipher not to encrypt characters which are not in its alphabet. This is done by passing `nonalphabet_char_strategy` argument to `encrypt`/`decrypt` class method (or by using `nonalphabet_char_strategy=` instance method):
 
 ```ruby
 plaintext = "ATTACK AT DAWN!"
