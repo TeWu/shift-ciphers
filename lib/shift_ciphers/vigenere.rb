@@ -32,11 +32,11 @@ module ShiftCiphers
     protected
 
     def process(text, direction)
-      key_offsets = @key_offsets.cycle
+      offsets_stream = create_offsets_stream
       text.each_char.reduce("") do |ciphertext, char|
         char_idx = alphabet.index(char)
         if !char_idx.nil?
-          rel_offset = key_offsets.next * (direction == :encrypt ? 1 : -1)
+          rel_offset = offsets_stream.next * (direction == :encrypt ? 1 : -1)
           ciphertext << alphabet[(char_idx + rel_offset) % alphabet.size]
         else
           if nonalphabet_char_strategy == :dont_encrypt
@@ -48,15 +48,20 @@ module ShiftCiphers
       end
     end
 
+    def set_key_offsets
+      @key_offsets = @key.chars.map {|c| alphabet.index(c) }
+    end
+
+    def create_offsets_stream
+      @key_offsets.cycle
+    end
+
     def validate_key(key, alphabet)
       key.each_char do |char|
         raise CipherError.new("Invalid key #{key.inspect}. Character #{char.inspect} is not in the alphabet: #{alphabet.inspect}") unless alphabet.include?(char)
       end
     end
 
-    def set_key_offsets
-      @key_offsets = @key.chars.map {|c| alphabet.index(c) }
-    end
 
     class << self
       def encrypt(plaintext, key, **options)
