@@ -22,25 +22,25 @@ module ShiftCiphers
     end
 
     def encrypt(plaintext)
-      process(plaintext, :encrypt)
+      process(plaintext, true)
     end
 
     def decrypt(ciphertext)
-      process(ciphertext, :decrypt)
+      process(ciphertext, false)
     end
 
     protected
 
-    def process(text, direction)
+    def process(text, encrypting = true)
       offsets_stream = create_offsets_stream
-      text.each_char.reduce("") do |ciphertext, char|
+      text.each_char.reduce("") do |result, char|
         char_idx = alphabet.index(char)
         if !char_idx.nil?
-          rel_offset = offsets_stream.next * (direction == :encrypt ? 1 : -1)
-          ciphertext << alphabet[(char_idx + rel_offset) % alphabet.size]
+          rel_offset = offsets_stream.next * (encrypting ? 1 : -1)
+          result << alphabet[(char_idx + rel_offset) % alphabet.size]
         else
           if nonalphabet_char_strategy == :dont_encrypt
-            ciphertext << char
+            result << char
           else
             raise CipherError.new("Invalid input #{text.inspect}. Character #{char.inspect} is not in the alphabet: #{alphabet.inspect}")
           end

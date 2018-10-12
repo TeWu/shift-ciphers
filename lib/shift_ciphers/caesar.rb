@@ -10,24 +10,24 @@ module ShiftCiphers
     end
 
     def encrypt(plaintext)
-      process(plaintext, :encrypt)
+      process(plaintext, true)
     end
 
     def decrypt(ciphertext)
-      process(ciphertext, :decrypt)
+      process(ciphertext, false)
     end
 
     protected
 
-    def process(text, direction)
-      text.each_char.reduce("") do |ciphertext, char|
+    def process(text, encrypting = true)
+      text.each_char.reduce("") do |result, char|
         char_idx = alphabet.index(char)
         if !char_idx.nil?
-          rel_offset = offset * (direction == :encrypt ? 1 : -1)
-          ciphertext << alphabet[(char_idx + rel_offset) % alphabet.size]
+          rel_offset = offset * (encrypting ? 1 : -1)
+          result << alphabet[(char_idx + rel_offset) % alphabet.size]
         else
           if nonalphabet_char_strategy == :dont_encrypt
-            ciphertext << char
+            result << char
           else
             raise CipherError.new("Character #{char.inspect} is not in the alphabet: #{alphabet.inspect}")
           end
