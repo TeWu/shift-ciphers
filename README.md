@@ -1,7 +1,7 @@
 Shift Ciphers [![Gem Version](https://badge.fury.io/rb/shift_ciphers.svg)](http://badge.fury.io/rb/shift_ciphers) [![Build Status](https://travis-ci.org/TeWu/shift-ciphers.svg?branch=master)](https://travis-ci.org/TeWu/shift-ciphers)
 =======
 
-**Shift Ciphers** gem is simple, yet complete, implementation of [Caesar](https://en.wikipedia.org/wiki/Caesar_cipher) and [Vigenère](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher) ciphers.
+**Shift Ciphers** gem is simple, yet complete, implementation of classic [Caesar][1] and [Vigenère][2] ciphers. It also features custom, hardened version of Vigenère cipher, which uses [autokey scheme][3] and [PRNG][4]s.
 
 Installation
 -------
@@ -23,6 +23,10 @@ decrypted == plaintext  # Should be true
 encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "my keyword")    # => "W!0uqS3yU=zI3H{"
 decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "my keyword")    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
+
+encrypted = ShiftCiphers::HardenedVigenere.encrypt(plaintext, "my keyword")    # => "Z6tappN^Ap[o&Ns"
+decrypted = ShiftCiphers::HardenedVigenere.decrypt(encrypted, "my keyword")    # => "Attack at dawn!"
+decrypted == plaintext  # Should be true
 ```
 
 ... or instantiate a cipher, and benefit from stored configuration info (e.g. `offset` for Caesar cipher, or `key` for Vigenère):
@@ -37,6 +41,11 @@ decrypted == plaintext  # Should be true
 vigenere = ShiftCiphers::Vigenere.new("my keyword")
 encrypted = vigenere.encrypt(plaintext)    # => "W!0uqS3yU=zI3H{"
 decrypted = vigenere.decrypt(encrypted)    # => "Attack at dawn!"
+decrypted == plaintext  # Should be true
+
+strong_vigenere = ShiftCiphers::HardenedVigenere.new("my keyword")
+encrypted = strong_vigenere.encrypt(plaintext)    # => "Z6tappN^Ap[o&Ns"
+decrypted = strong_vigenere.decrypt(encrypted)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 ```
 
@@ -67,3 +76,8 @@ puts plaintext  # => ATTACK AT DAWN!
 puts encrypted  # => KXRWQB DD HYSB!
 decrypted == plaintext  # Should be true
 ```
+
+[1]: https://en.wikipedia.org/wiki/Caesar_cipher
+[2]: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+[3]: https://en.wikipedia.org/wiki/Autokey_cipher
+[4]: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
