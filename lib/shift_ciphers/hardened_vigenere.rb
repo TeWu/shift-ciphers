@@ -13,9 +13,14 @@ module ShiftCiphers
     protected
 
     def process(text, encrypting = true)
+      stage1 = process_single(text, text.each_char, encrypting)
+      process_single(stage1, stage1.each_char.reverse_each, encrypting)
+    end
+
+    def process_single(text, text_enumerator, encrypting = true)
       offsets_stream = create_offsets_stream
       plaintext_char = ""
-      text.each_char.reduce("") do |result, char|
+      text_enumerator.reduce("") do |result, char|
         char_idx = alphabet.index(char)
         if !char_idx.nil?
           rel_offset = offsets_stream.next(plaintext_char) * (encrypting ? 1 : -1)
