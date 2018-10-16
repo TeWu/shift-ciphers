@@ -9,7 +9,7 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
     specify "transcryption with one letter key, which is the first letter in the cipher's alphabet" do
       key = @cipher.alphabet[0]
       plaintext  = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext = "*aME3^tAC=7SQ4hdYlKFfm_AGe*I6o^\"5wKN hV92"
+      ciphertext = "sJw/,{K{<Nm oDH97F7<=GKUl,Jd6+om<CYhKhHp."
 
       @cipher = ShiftCiphers::HardenedVigenere.new(key)
       encrypted = @cipher.encrypt(plaintext)
@@ -21,7 +21,7 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
     specify "transcryption with one letter key" do
       key = "e"
       plaintext  = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext = "_!3JZVo\"W7@W7&4sf2$WGktR&EauJQfCk;oU9G3JQ"
+      ciphertext = ":;(vX%@vV3]<'-g),>x;_%k{\"$PBTgfY3i1+0v6T0"
 
       @cipher = ShiftCiphers::HardenedVigenere.new(key)
       encrypted = @cipher.encrypt(plaintext)
@@ -33,7 +33,7 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
     specify "transcryption with two letters key" do
       key = "o2"
       plaintext  = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext = "^2(Xt10CD.&%U8G 8dsMRI*%70DjnRb A-ilMRNuL"
+      ciphertext = "(/L&!\"z;1%'v.WT/+FW:}y8<jE7k?_x}=$d)cV5(u"
 
       @cipher = ShiftCiphers::HardenedVigenere.new(key)
       encrypted = @cipher.encrypt(plaintext)
@@ -45,7 +45,7 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
     specify "transcryption with long key" do
       key = "Morbi 02 cc ultrices sagittis augue blandit interdum. 55! Suspendisse vitae lacinia quam! Id sollicitudin neque. Donec suscipit iaculis nisl, nec mattis ante commodo in. Nullam facilisis felis nisl, ac lacinia lorem accumsan sed. Maecenas euismod lectus dolor, at aliquet dui condimentum sit amet. Mauris finibus, ante vitae euismod laoreet, turpis diam maximus leo, a tristique risus neque nec odio. Mauris mi erat, accumsan in tempus nec, bibendum eget nisi. Suspendisse non consequat metus, sed facilisis lorem. Vivamus tincidunt dignissim eros varius porttitor. Vestibulum quis pulvinar diam, vitae egestas dolor."
       plaintext  = "In rissus ex, nullam vel pretium laoreet." * 20
-      ciphertext = "-c/5Ly*:%sclnk?\"+LAundpHS\"PyR/8ou+FBsP2aW@YTTCG<:/0u<h{#AQviw[mm1cn=}3l$'s\"(=%cle}gQDSgg: ]I//0e(keXRtfg$oSgRJNfC1B)xh/G}BSO:b&}nxf}fUVUz'ewBYW@&HO)X30<]>eO(uYW;&4S*ER0)x*X/4mh3OD_uBlx$)'ShQ]m3w5kN7}\"!V;.7w??1r*mw,KvT)K)#MfeCmdo_Pr<D2 Usst5>R;Cpd 6wx)T]3Gce?e(# ,i/_lGS(%q_c%^{tvmoSJ{Qe)DYBZLbj{&/Ke]CFZW\"'A4BUe$p.\"td#gXl8S7YGzpUeFfW%N#)8B>RA'ul; [r5f9Q)%0]:b!] >hnN-*:/YJ6bBjyqmr;ZAIaVI+O8KlaWS903b7?GVsO^Q@(pJWIK1zOfbX0i}:}#WN'6l5Bv,MO0f;LtTs,<eL[}KPye1'}}4Jdb%yha(l_bhE};HPUTjj,yJ9.dNZSG-;X{{:XFi-,B7)lRi3oDocivi#;@6kx$,T0:kc#I!#GdR[3I}\"@/xbW(mlxO-.\"e5:{6DF'ZuUnuHs?${[rZ!Rp7M*mbx<,&yl<:c9#PEK%}'mM[!_ *o]a,B0'M7),%L+I$k2B4 0_p9f/.wf]bdD*Lw,VLPS,7t;l{jKO1T>;+E{;9B>FQ7N4^yZBh24A%>gkIxF3PF<m+V9Bo\"}DvJXFk805hCyO}W\"iU+V'h2UQWFCbosPIQZIb(*@*B'QRzg8r_%p;V+1Uy6Lp#-Qa9tD%(^*<b$cei:A6eZ i=Hq* 2eP\"\"a:bCPUPpO)+XMZq*L5l%*iM?T"
+      ciphertext = "\"z0pIfMQ-:/[ >bQT;lsBQ.0je0SrW/Ob:VMk]_BaAo5t@XdgCyf'Rk&2OW_Y 5fx:I a0b Tig/TB^70'o(36=UV?{$.-&Ak@Hb]Q{>iEpI&?. VBS,L[D,mqh]>o%?p^H1187)V?kIdiu5t\"-PbPNGl<@o3Hx7*-d3@2S]:$aAd2$H2oWkhL&@?HxLw:6_ocCY%2.Iy[1c j4}TFn8(N7)fV;1Q^[/<iCfDuBd,fk^oe0v}Cbn<b:G>*F:YgC;GX(OD4p$YFZmXPv8a%I1]qlapLN5tCr<U3yH@%r%^.OV1+PI(*K8Nh8!@Bwv7ax<[6;=-6YszW](0+Jw0c#<g5+deX0-LHo6:0sK>8&)^Dw1#4&lt4?.S,yd:($n$%k/$hkDAcRGBF#+_R@VH@u<H*)Iw?eE}ac}<%+5q(*u)rmD&4;-kKg:G1b$)2U@E5d csM}{f'E9&x$MD.0_QmI}sTD=3(:zC\"3>sUy=o!E1&Cw^KI(:$D89MFJDJ&NYqJ/P[3au>n(:e>:vG'c5(&\"zK@U#bG_P^]7Xpy/_Aba*Qe\"a 8a[icu{-C+</T697k5T?D:3hX9\"v>)UUMYhs+8Jj--Dw@.,k/4(h\"Y.$LFMcSnjR)fv>b0a_(mxCCy&$MQO<:1AQs=;Ig'L8Y715=H%T}<2]MNYux#XZXdMy(q8#c55!>Jcd/GqE7a6>Hq$<NtNz)8.+An A*%6-l{TXoo[Mn<?P:0n1 )2,0v[<smsmGdK9TgDiJm=7L//Xk*taV03%,FS<Fc'&(zw{L1,L02;f\"44;#w66/Yzjbs1K\"0Cj<2M]g*A7]N"
 
       @cipher = ShiftCiphers::HardenedVigenere.new(key)
       encrypted = @cipher.encrypt(plaintext)
@@ -56,7 +56,7 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
 
     specify "decryption with wrong key" do
       plaintext  = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext = "EU{k5WK tqK*+xw1sH3=]'eDa!x%0d@mcmxQ[sRyv"
+      ciphertext = "rXhInpbE-D.-#gceH7@y!jd,lL!rUxo_6d hnwsmB"
 
       encrypted = @cipher.encrypt(plaintext)
       @cipher = ShiftCiphers::HardenedVigenere.new("wrong key")
@@ -67,8 +67,8 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
 
     specify "set custom key" do
       plaintext                   = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext_with_default_key = "EU{k5WK tqK*+xw1sH3=]'eDa!x%0d@mcmxQ[sRyv"
-      ciphertext_with_custom_key  = "8*1(zwA^E5?W&j#rRzkZSb^;4GiTI!-fc\"4Bfpz:;"
+      ciphertext_with_default_key = "rXhInpbE-D.-#gceH7@y!jd,lL!rUxo_6d hnwsmB"
+      ciphertext_with_custom_key  = "J]pMI\"Btytv})%rk56/c6Z#mTt\"j5.(yZQlEuF1>0"
 
       encrypted = @cipher.encrypt(plaintext)
       decrypted = @cipher.decrypt(encrypted)
@@ -101,8 +101,8 @@ RSpec.describe ShiftCiphers::HardenedVigenere do
   context "using cipher's class methods" do
     specify "get different ciphertexts by using different keys" do
       plaintext    = "In rissus ex, nullam vel pretium laoreet."
-      ciphertext_1 = "EU{k5WK tqK*+xw1sH3=]'eDa!x%0d@mcmxQ[sRyv"
-      ciphertext_2 = "8*1(zwA^E5?W&j#rRzkZSb^;4GiTI!-fc\"4Bfpz:;"
+      ciphertext_1 = "rXhInpbE-D.-#gceH7@y!jd,lL!rUxo_6d hnwsmB"
+      ciphertext_2 = "J]pMI\"Btytv})%rk56/c6Z#mTt\"j5.(yZQlEuF1>0"
 
       encrypted = ShiftCiphers::HardenedVigenere.encrypt(plaintext, DEFAULT_KEY)
       decrypted = ShiftCiphers::HardenedVigenere.decrypt(encrypted, DEFAULT_KEY)
