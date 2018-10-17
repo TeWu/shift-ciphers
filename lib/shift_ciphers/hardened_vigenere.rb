@@ -43,7 +43,7 @@ module ShiftCiphers
 
 
     class RandomOffsetsStream
-      SEEDING_RAND_MAX = 2**32-1
+      SEEDING_RAND_MAX = 2**31-1
 
       def initialize(key, max, iseed)
         @random = key.bytes.reduce(Random.new(iseed)) do |random, byte|
