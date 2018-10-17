@@ -24,7 +24,7 @@ encrypted = ShiftCiphers::Vigenere.encrypt(plaintext, "my keyword")    # => "W!0
 decrypted = ShiftCiphers::Vigenere.decrypt(encrypted, "my keyword")    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 
-encrypted = ShiftCiphers::HardenedVigenere.encrypt(plaintext, "my keyword")    # => "Z6tappN^Ap[o&Ns"
+encrypted = ShiftCiphers::HardenedVigenere.encrypt(plaintext, "my keyword")    # => " )a=\"IX;2=j_i[:"
 decrypted = ShiftCiphers::HardenedVigenere.decrypt(encrypted, "my keyword")    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 ```
@@ -44,7 +44,7 @@ decrypted = vigenere.decrypt(encrypted)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 
 strong_vigenere = ShiftCiphers::HardenedVigenere.new("my keyword")
-encrypted = strong_vigenere.encrypt(plaintext)    # => "Z6tappN^Ap[o&Ns"
+encrypted = strong_vigenere.encrypt(plaintext)    # => " )a=\"IX;2=j_i[:"
 decrypted = strong_vigenere.decrypt(encrypted)    # => "Attack at dawn!"
 decrypted == plaintext  # Should be true
 ```
