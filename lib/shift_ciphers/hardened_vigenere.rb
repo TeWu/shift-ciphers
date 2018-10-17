@@ -1,13 +1,13 @@
 module ShiftCiphers
   class HardenedVigenere < Vigenere
-    attr_accessor :initialization_seed
+    attr_accessor :initial_seed
 
-    def initialize(key, alphabet: Alphabets::DEFAULT, nonalphabet_char_strategy: :error, initialization_seed: 0)
+    def initialize(key, alphabet: Alphabets::DEFAULT, nonalphabet_char_strategy: :error, initial_seed: 0)
       validate_key(key, alphabet)
       @key = key
       @alphabet = alphabet
       @nonalphabet_char_strategy = nonalphabet_char_strategy
-      @initialization_seed = initialization_seed
+      @initial_seed = initial_seed
     end
 
     protected
@@ -38,15 +38,15 @@ module ShiftCiphers
     end
 
     def create_offsets_stream
-      RandomOffsetsStream.new(key, alphabet.size - 1, @initialization_seed)
+      RandomOffsetsStream.new(key, alphabet.size - 1, @initial_seed)
     end
 
 
     class RandomOffsetsStream
       SEEDING_RAND_MAX = 2**31-1
 
-      def initialize(key, max, iseed)
-        @random = key.bytes.reduce(Random.new(iseed)) do |random, byte|
+      def initialize(key, max, initial_seed)
+        @random = key.bytes.reduce(Random.new(initial_seed)) do |random, byte|
           Random.new(random.rand(SEEDING_RAND_MAX) ^ byte)
         end
         @max = max
