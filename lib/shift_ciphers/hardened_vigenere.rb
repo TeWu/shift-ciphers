@@ -46,6 +46,7 @@ module ShiftCiphers
       SEEDING_RAND_MAX = 2**31-1
 
       def initialize(key, max, initial_seed)
+        @key_stream = key.bytes.cycle
         @random = key.bytes.reduce(Random.new(initial_seed)) do |random, byte|
           Random.new(random.rand(SEEDING_RAND_MAX) ^ byte)
         end
@@ -54,7 +55,7 @@ module ShiftCiphers
 
       def next(plaintext_char)
         plaintext_byte = plaintext_char.bytes.reduce(0){|a,e| a ^ e}
-        @random = Random.new(@random.rand(SEEDING_RAND_MAX) ^ plaintext_byte)
+        @random = Random.new(@random.rand(SEEDING_RAND_MAX) ^ @key_stream.next ^ plaintext_byte)
         @random.rand(@max)
       end
     end
